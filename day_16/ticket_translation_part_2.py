@@ -32,14 +32,6 @@ def read_sections(lines):
         yield section
 
 
-class Callback(cp_model.CpSolverSolutionCallback):
-    def __init__(self, variables):
-        super().__init__(self)
-
-    def on_solution_callback(self):
-        print('got one')
-
-
 def solve(tickets):
     model = cp_model.CpModel()
     num_fields = len(fields)
