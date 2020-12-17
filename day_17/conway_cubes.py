@@ -48,8 +48,8 @@ def print_grid(active_cells):
     xs, ys, zs = zip(*active_cells)
     for z in range(min(zs), max(zs) + 1):
         print('z =', z)
-        for y in range(min(ys), max(ys) + 1):
-            for x in range(min(xs), max(xs) + 1):
+        for x in range(min(xs), max(xs) + 1):
+            for y in range(min(ys), max(ys) + 1):
                 print('#' if (x, y, z) in active_cells else '.', end='')
             print()
         print()
