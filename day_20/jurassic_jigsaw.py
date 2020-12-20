@@ -145,9 +145,9 @@ print(solver.StatusName(solver.Solve(model)))
 prod = 1
 for v in assignments.values():
     if solver.Value(v):
-        _, tile_id, _flipped, _rot, x, y = v.Name().split('_')
+        _, tile_id, flipped, rot, x, y = v.Name().split('_')
+        print(x, y, tile_id, flipped, rot)
         if (int(x), int(y)) in ((0, 0), (0, size - 1), (size - 1, 0), (size - 1, size - 1)):
-            print(v)
             prod *= int(tile_id)
 
 print(prod)
