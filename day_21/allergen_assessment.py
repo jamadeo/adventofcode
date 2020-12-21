@@ -1,4 +1,3 @@
-from collections import defaultdict
 import fileinput
 import re
 
@@ -12,8 +11,6 @@ def read_line(line):
 
 lines = [read_line(l) for l in fileinput.input()]
 
-all_allergens = set(allergen for ingredients, allergens in lines for allergen in allergens)
-all_ingredients = set(ingredient for ingredients, allergens in lines for ingredient in ingredients)
 
 assignments = {}
 
@@ -25,6 +22,14 @@ for ingredients, allergens in lines:
             assignments[allergen] &= set(ingredients)
 
 all_assigned = {i for ingredients in assignments.values() for i in ingredients}
+
+total_unassigned = 0
+for ingredients, allergens in lines:
+    for ingredient in ingredients:
+        if ingredient not in all_assigned:
+            total_unassigned += 1
+print(f'{total_unassigned=}')
+
 
 final_assignments = {}
 while any(len(a) for a in assignments.values()):
